@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class XP : MonoBehaviour
 {
-    public int hp = 100;
-    public int attack = 0;
-    public int defence = 0;
-    public int speed = 0;
-    public int skill = 0;
-    public int luck = 0;
+
+    //establishing variables for script
+    public int hp;
+    public int attack;
+    public int defence;
+    public int speed;
+    public int skill;
+    public int luck;
 
     public int level;
     public int experience;
@@ -32,7 +34,7 @@ public class XP : MonoBehaviour
         print("Current Level = 1");
         print("Percentage Chance of stats going up:");
 
-        //increase will be determined by a 1-20 dice roll with 1 being 5% and 20 being 100%. If value of roll is over percentage chance then stat goes up.
+        //increase will be determined by a 1-20 dice roll with 1 being 100% and 20 being 5%. If value of roll is over percentage chance then stat goes up.
         print("HP = 100%");
         print("Attack = 50%");
         print("Defence = 40%");
@@ -66,14 +68,16 @@ public class XP : MonoBehaviour
     void Levelup()
     {
 
-        //level up
+        //level up initiation
         level += 1;
         experience = 0;
         hp += 100;
+
+        //increase experience required cap
         experiencerequired += 100;
         Debug.Log("Level up!");
 
-        if (level > 1) //need formule to check if a level up occured)
+        if (level > 1) //checking player level
         {
             Statup();
         }
@@ -83,10 +87,10 @@ public class XP : MonoBehaviour
         }
  
 
-        void Statup()
+        void Statup() //stat up determination system
         {
             //attack level up
-            if (Random.Range(1, 21) > 9)
+            if (Random.Range(1, 21) > 10)
             {
                 attack += 1;
                 Debug.Log("ATK Up!");
@@ -96,7 +100,7 @@ public class XP : MonoBehaviour
                 attack += 0;
             }
             //defence level up
-            if (Random.Range(1, 21) > 7)
+            if (Random.Range(1, 21) > 12)
             {
                 defence += 1;
                 Debug.Log("DEF Up!");
@@ -106,7 +110,7 @@ public class XP : MonoBehaviour
                 defence += 0;
             }
             //speed level up
-            if (Random.Range(1, 21) > 10)
+            if (Random.Range(1, 21) > 11)
             {
                 speed += 1;
                 Debug.Log("SPD Up!");
@@ -116,7 +120,7 @@ public class XP : MonoBehaviour
                 speed += 0;
             }
             //skill level up
-            if (Random.Range(1, 21) > 9)
+            if (Random.Range(1, 21) > 10)
             {
                 skill += 1;
                 Debug.Log("SKILL Up!");
@@ -126,7 +130,7 @@ public class XP : MonoBehaviour
                 skill += 0;
             }
             //luck level up
-            if (Random.Range(1, 21) > 6)
+            if (Random.Range(1, 21) > 13)
             {
                 luck += 1;
                 Debug.Log("LUCK Up!");
