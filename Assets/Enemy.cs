@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Stats myStats;
+    public Stats myStats;
     //enemy 0 = small
     //enemy 1 = medium
     //enemy 2 = large
+
     public int enemyID = 1;
 
     public enum EnemyTypes
@@ -22,6 +23,8 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Find our gamemanager
+        GameManager = GameObject.FindGameObjectWithTag("GameManager");
         myStats = GetComponent<Stats>();
         switch (myType)
             {
@@ -35,18 +38,21 @@ public class Enemy : MonoBehaviour
             }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        myStats.health = 45;
-    }
     public void Attacked(int incDmg, Stats.StatusEffect incEffect)
     {
         myStats.health -= incDmg - myStats.defense;
         myStats.myStatus = incEffect;
+        if (myStats.health <= 0)
+            myStats.isDefeated = true;
     }
-    public void AttackTarget()
+    public void AttackTarget(GameObject target)
     {
-        Attacked(myStats.attack, Stats.StatusEffect.none);
+        target.GetComponent<Player>().Attacked(myStats.attack, Stats.StatusEffect.none);
     }
+
+    public void Defeated()
+    {
+        GameManager.GetComponet<GameManager>().RemoveEnemy(gameObject);
+    }
+
 }

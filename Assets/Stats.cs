@@ -10,6 +10,8 @@ public class Stats : MonoBehaviour
     public int defense;
     public int luck;
 
+    public bool isDefeated;
+
     public enum StatusEffect
     {
         none,
