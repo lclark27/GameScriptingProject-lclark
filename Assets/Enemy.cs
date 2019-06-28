@@ -17,14 +17,14 @@ public class Enemy : MonoBehaviour
         medium,
         large,
     }
-
+    private GameObject gameManager;
     public EnemyTypes myType;
 
     // Start is called before the first frame update
     void Start()
     {
         //Find our gamemanager
-        GameManager = GameObject.FindGameObjectWithTag("GameManager");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
         myStats = GetComponent<Stats>();
         switch (myType)
             {
@@ -37,7 +37,7 @@ public class Enemy : MonoBehaviour
                 break;
             }
     }
-
+    /*
     public void Attacked(int incDmg, Stats.StatusEffect incEffect)
     {
         myStats.health -= incDmg - myStats.defense;
@@ -45,14 +45,18 @@ public class Enemy : MonoBehaviour
         if (myStats.health <= 0)
             myStats.isDefeated = true;
     }
+
+    /*
     public void AttackTarget(GameObject target)
     {
         target.GetComponent<Player>().Attacked(myStats.attack, Stats.StatusEffect.none);
     }
+    */
+
 
     public void Defeated()
     {
-        GameManager.GetComponet<GameManager>().RemoveEnemy(gameObject);
+        gameManager.GetComponent<GameManager>().RemoveEnemy(gameObject);
     }
 
 }
