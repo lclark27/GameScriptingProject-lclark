@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodITem : MonoBehaviour
+public class FoodItem : MonoBehaviour
 {
     public enum FoodTypes
     {
-        eggs,
-        bacon,
-        fish,
-        ham,
-        toast,
-        sausages,
-        apples,
-        cereal,
-        porridge,
-        soup,
-        spaghetti,
+        Eggs,
+        Bacon,
+        Fish,
+        Ham,
+        Toast,
+        Sausages,
+        Apples,
+        Cereal,
+        Porridge,
+        Soup,
+        Spaghetti
     }
+
     public FoodTypes myType;
 }
