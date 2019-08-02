@@ -21,21 +21,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //check if we're on the ground
+        //trigger to check if player is on the ground
         if(controller.isGrounded)
         {
-            //if we are, check inputs for rotation/movement
+            //if yes, check inputs for rotation/movement
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             //calculate direction * speed
             moveDirection *= speed;
 
-            //Jumping
+            //Jumping function
             if(Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
             }
         }
-        //Apply gravity
+
+
+        //Apply gravity function
         moveDirection.y -= gravity * Time.deltaTime;
         //Move our character
         controller.Move(moveDirection * Time.deltaTime);

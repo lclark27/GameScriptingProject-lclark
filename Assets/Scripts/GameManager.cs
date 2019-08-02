@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     //void Awake is called before void Start on ANY OBJECT
     void Awake()
     {
-        //This will make it so we can travel between scenes (good for keeping track of gameplay!)
+        //Allows travel between scenes to keep track of gameplay
         DontDestroyOnLoad(this.gameObject);
     }
 

@@ -24,7 +24,7 @@ public class BattleUIManager : MonoBehaviour
 
     public void UpdateHealthBar(bool isPlayer, float health)
     {
-        //we will handle fill amount back in teh respective scripts calling this function
+        //we will handle fill amount back in the respective scripts calling this function
         if(isPlayer)
         {
             pHealthBarFill.fillAmount = health;

@@ -21,12 +21,13 @@ public class WildGrass : MonoBehaviour
         Debug.Log(diceRoll);
         if (diceRoll == 3 && isInGrass)
         {
-            //Encounter! Load battle scene
+            //Encounter triggered. Load the battle scene
             
             gameManager.GetComponent<GameManager>().TravelToWorld(GameManager.Worlds.BattleScene);
         }
         StartCoroutine(CheckTimer());
     }
+
 
     private void OnTriggerEnter(Collider col)
     {
@@ -36,6 +37,7 @@ public class WildGrass : MonoBehaviour
         }
     }
 
+
     private void OnTriggerExit(Collider col)
     {
         if(col.gameObject.tag == "Player")
@@ -43,6 +45,7 @@ public class WildGrass : MonoBehaviour
             isInGrass = false;
         }
     }
+
 
     IEnumerator CheckTimer()
     {

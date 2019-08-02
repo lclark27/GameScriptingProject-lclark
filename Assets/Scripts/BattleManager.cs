@@ -25,7 +25,8 @@ public class BattleManager : MonoBehaviour
         Loss
     }
     public CombatState combatState;
-    //objects for combat
+
+    //combat objects
     public GameObject playerObj;
     public GameObject enemyObj;
     private GameObject gameManager;
@@ -80,6 +81,7 @@ public class BattleManager : MonoBehaviour
     public void SpawnEnemy()
     {
         //Spawn an enemy from our list of spawnable enemies
+
         //using the size of the list as the random range maximum
         Instantiate(enemySpawnList[Random.Range(0, enemySpawnList.Count)], transform);
     }
@@ -109,7 +111,7 @@ public class BattleManager : MonoBehaviour
                 {
                     //set state to lose cause we died
                     combatState = CombatState.Loss;
-                    Debug.Log("Lose");
+                    Debug.Log("You Lose...");
                     break;
                 }
                 //Next Case. Most likely PlayerTurn
@@ -117,9 +119,9 @@ public class BattleManager : MonoBehaviour
                 break;
             //Victory
             case CombatState.Victory:
-                Debug.Log("You are win");
-                //You will want to assign exp here, before you travel, otherwise it could be an issue where you don't get your reward!
-                //Travels out to the overworld!
+                Debug.Log("You Win!");
+                //Assign exp here, before you travel, otherwise it could be an issue where you don't get your reward!
+                //Travels out to the overworld.
                 gameManager.GetComponent<GameManager>().TravelToWorld(GameManager.Worlds.Overworld);
                 break;
             //Tell the player they won
@@ -138,8 +140,8 @@ public class BattleManager : MonoBehaviour
     public void BattleRound(GameObject attacker, GameObject defender)
     {
         //will take an attacker and defender and make them do combat
-        //you will need to add a chance of them missing based on one of their stats
-        //something like evasion/accuracy
+        //add a chance of them missing based on one of their stats (like evasion/accuracy)
+
         defender.GetComponent<Stats>().Attacked(attacker.GetComponent<Stats>().attack, Stats.StatusEffect.none);
         Debug.Log(attacker.name +
             " attacks " +

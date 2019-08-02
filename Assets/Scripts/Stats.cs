@@ -12,6 +12,7 @@ public class Stats : MonoBehaviour
 
     public bool isDefeated;
 
+
     public enum StatusEffect
     {
         none,

@@ -28,7 +28,8 @@ public class MyScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            //very simple coin toss
+
+            //coin toss
             //1 is winner
             
             //if(Random.Range(successCalc,100) > 75)
