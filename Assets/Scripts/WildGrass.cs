@@ -6,6 +6,8 @@ public class WildGrass : MonoBehaviour
 {
     private GameObject gameManager;
 
+    public int chance;
+
     public bool isInGrass;
     // Start is called before the first frame update
     void Start()
@@ -17,35 +19,32 @@ public class WildGrass : MonoBehaviour
 
     void RollDice()
     {
-        int diceRoll = Random.Range(1, 7);
+        int diceRoll = Random.Range(1, chance);
         Debug.Log(diceRoll);
-        if (diceRoll == 3 && isInGrass)
+        if (diceRoll == chance - 1 && isInGrass)
         {
-            //Encounter triggered. Load the battle scene
-            
+            //Encounter! Load battle scene
+
             gameManager.GetComponent<GameManager>().TravelToWorld(GameManager.Worlds.BattleScene);
         }
         StartCoroutine(CheckTimer());
     }
 
-
     private void OnTriggerEnter(Collider col)
     {
-        if(col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
             isInGrass = true;
         }
     }
 
-
     private void OnTriggerExit(Collider col)
     {
-        if(col.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
             isInGrass = false;
         }
     }
-
 
     IEnumerator CheckTimer()
     {

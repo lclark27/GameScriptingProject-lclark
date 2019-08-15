@@ -20,21 +20,20 @@ public class MyScript : MonoBehaviour
         ModifyLives(-2);
         DisplayName("Jake", "Thomas");
         attendanceRate = Mathf.RoundToInt((float)attending / (float)classSize * 100);
-        
+
         Debug.Log("Attendance %: " + attendanceRate);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-
-            //coin toss
+            //very simple coin toss
             //1 is winner
-            
+
             //if(Random.Range(successCalc,100) > 75)
 
-            if(Random.Range(1,7) > 4)
+            if (Random.Range(1, 7) > 4)
             {
                 HelloWorld();
                 ModifyLives(2);
@@ -47,9 +46,9 @@ public class MyScript : MonoBehaviour
             }
         }
 
-        if(!classCounted)
+        if (!classCounted)
         {
-            for(int i = 1; i < classSize; i++)
+            for (int i = 1; i < classSize; i++)
             {
                 Debug.Log(i);
             }

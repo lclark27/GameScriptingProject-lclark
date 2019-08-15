@@ -25,10 +25,13 @@ public class Enemy : MonoBehaviour
         switch (myType)
         {
             case EnemyTypes.small:
+                //do setup
                 break;
             case EnemyTypes.medium:
+                //do thing
                 break;
             case EnemyTypes.large:
+                //do thing
                 break;
         }
         //StartCoroutine(randomDelay());

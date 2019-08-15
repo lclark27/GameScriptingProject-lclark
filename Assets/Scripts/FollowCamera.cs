@@ -10,16 +10,15 @@ public class FollowCamera : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //make speed slower (Number between 0 and 1)
+        //make speed slower, not so fast (Number between 0 and 1)
         float t = followSpeed * Time.deltaTime;
-
-        //Move to this position by whatever our speed is.
+        //Move to this position by whatever our speed is (0.16th of the way or something)
         transform.position = Vector3.Lerp(transform.position, followLocation.position, t);
     }
 }

@@ -10,5 +10,5 @@ public class Player : MonoBehaviour
     void Start()
     {
         myStats = GetComponent<Stats>();
-    } 
+    }
 }

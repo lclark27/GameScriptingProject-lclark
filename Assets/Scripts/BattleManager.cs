@@ -52,7 +52,7 @@ public class BattleManager : MonoBehaviour
         //find our game manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         //copy list of enemies to spawn from
-        foreach(GameObject tempEnemy in gameManager.GetComponent<GameManager>().EnemiesToFight)
+        foreach (GameObject tempEnemy in gameManager.GetComponent<GameManager>().EnemiesToFight)
         {
             enemySpawnList.Add(tempEnemy);
         }
@@ -64,7 +64,7 @@ public class BattleManager : MonoBehaviour
 
     void Update()
     {
-        if(doBattle)
+        if (doBattle)
         {
             //Set turn based on playerObj speed and enemyObj speed
             //Fastest should go first, random if same
@@ -83,7 +83,7 @@ public class BattleManager : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        if(enemySpawnList.Count > 0)
+        if (enemySpawnList.Count > 0)
         {
             //get the spawn location for the enemies using a tag like "EnemySpawnLoc"
             Transform EnemySpawnLoc = GameObject.FindGameObjectWithTag("EnemySpawnLoc").transform;
@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
         {
             combatState = CombatState.Victory;
         }
-        
+
     }
 
     public void CheckCombatState()
@@ -111,7 +111,7 @@ public class BattleManager : MonoBehaviour
                 {
                     RemoveEnemy(enemyObj);
                     SpawnEnemy();
-                }   
+                }
                 //Next Case. Most likely EnemyTurn
                 combatState = CombatState.EnemyTurn;
                 break;
@@ -121,7 +121,7 @@ public class BattleManager : MonoBehaviour
                 //Attack the player
                 BattleRound(enemyObj, playerObj);
                 //Check if Player is defeated
-                if(playerObj.GetComponent<Stats>().isDefeated)
+                if (playerObj.GetComponent<Stats>().isDefeated)
                 {
                     //set state to lose cause we died
                     combatState = CombatState.Loss;
@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour
                 break;
             //Victory
             case CombatState.Victory:
-                Debug.Log("You are win");
+                Debug.Log("You win");
                 //You will want to assign exp here, before you travel, otherwise it could be an issue where you don't get your reward!
                 //Travels out to the overworld!
                 gameManager.GetComponent<GameManager>().TravelToWorld(GameManager.Worlds.Overworld);
@@ -161,7 +161,7 @@ public class BattleManager : MonoBehaviour
             " attacks " +
             defender.name +
             " for a total of " +
-            (attacker.GetComponent<Stats>().attack - defender.GetComponent<Stats>().defense) + 
+            (attacker.GetComponent<Stats>().attack - defender.GetComponent<Stats>().defense) +
             " damage");
         //Setup temporary float value for fill amount (0.0f - 1.0f) by simply dividing current health by max health
         float percentage = defender.GetComponent<Stats>().health / defender.GetComponent<Stats>().maxHealth;
