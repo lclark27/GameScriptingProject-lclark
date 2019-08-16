@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         if (gameManRef == null)
         {
             gameManRef = this;
-            //This will make it so we can travel between scenes (good for keeping track of gameplay!)
+            //This will make it so we can travel between scenes (useful for keeping track of gameplay!)
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        //we start in the overworld so lets load the shizzle
+        //we start in the overworld, load the settijng
         LoadPlayerStuff(true);
     }
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            //add random enemies to fight from our list, this will run each time we enter wild grass!
+            //add random enemies to fight from our list, this will run each time we enter wild grass.
             EnemiesToFight.Add(EnemySpawnList[Random.Range(0, EnemySpawnList.Count)]);
         }
     }
@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetFloat("playerRotz", playerObj.transform.rotation.z);
         }
 
-        //Save stats that we need to track!
+        //Save stats that we need to track.
         Stats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
         PlayerPrefs.SetFloat("playerHealth", playerStats.health);
         PlayerPrefs.SetInt("playerCurrentExp", playerStats.curExp);
@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
 
     void LoadPlayerStuff(bool goingToOverworld)
     {
-        //load the existing stats and apply them to the player!
+        //load the existing stats and apply them to the player.
         Stats playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
         playerStats.health = PlayerPrefs.GetFloat("playerHealth", playerStats.maxHealth);
         playerStats.curExp = PlayerPrefs.GetInt("playerCurrentExp", 0);

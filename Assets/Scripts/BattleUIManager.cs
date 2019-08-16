@@ -15,7 +15,7 @@ public class BattleUIManager : MonoBehaviour
 
     public BattleManager bManager;
 
-    //we use System. to avoid Random.Range errors (and other syntax error garbo)
+    //we use System. to avoid Random.Range errors (and other syntax errors)
     public event System.Action CallAttack;
     public event System.Action CallDefend;
     public event System.Action CallHeal;
@@ -28,7 +28,7 @@ public class BattleUIManager : MonoBehaviour
     {
         //UpdateHealthBar(true, amount);
         bManager = GameObject.FindGameObjectWithTag("BattleManager").GetComponent<BattleManager>();
-        //original event on left, subscriber on the right!
+        //original event on left, subscriber on the right.
         bManager.UpdateHealth += UpdateHealthBar;
     }
 
@@ -39,7 +39,7 @@ public class BattleUIManager : MonoBehaviour
 
     public void UpdateHealthBar(bool isPlayer, float health)
     {
-        //we will handle fill amount back in the respective scripts calling this function!
+        //we will handle fill amount back in the respective scripts calling this function.
         if (isPlayer)
         {
             pHealthBarFill.fillAmount = health;
@@ -51,8 +51,7 @@ public class BattleUIManager : MonoBehaviour
     }
 
     //Since we can't call events directly from the Buttons in the UI we're just going
-    //to make these functions (plus if we need to do any fancy graphics this will be
-    //much easier having these anyways
+    //to make these functions
     public void CallAttackEvent()
     {
         Debug.Log("Attack");
@@ -78,7 +77,7 @@ public class BattleUIManager : MonoBehaviour
         {
             combatLog.RemoveAt(combatLog.Count - 1);
         }
-        //loop through array and set the text to the strings!
+        //loop through array and set the text to the strings.
         for (int i = 0; i < combatLog.Count; i++)
         {
             combatLogLines[i].text = combatLog[i];

@@ -40,7 +40,7 @@ public class BattleManager : MonoBehaviour
         battleUIManager.GetComponent<BattleUIManager>().CallAttack += CheckCombatState;
         battleUIManager.GetComponent<BattleUIManager>().CallDefend += CheckCombatState;
         battleUIManager.GetComponent<BattleUIManager>().CallHeal += CheckCombatState;
-        //You would need to probably have an enum called "playerDecision" which would keep track
+        //You would need an enum called "playerDecision" which would keep track
         //of whatever button was pressed (decision made) and then call CheckCombatState using that
         //on the players turn. Automatically run during the enemies turn but turn it back to manual
         //during the players turn (you can use coroutines and bools to handle this!)
@@ -51,12 +51,12 @@ public class BattleManager : MonoBehaviour
     {
         //find our game manager
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
-        //copy list of enemies to spawn from
+        //copy list of enemies to spawn from.
         foreach (GameObject tempEnemy in gameManager.GetComponent<GameManager>().EnemiesToFight)
         {
             enemySpawnList.Add(tempEnemy);
         }
-        //clear the list so the gameManager doesn't need to worry about it and we're ready to go for next time!
+        //clear the list so the gameManager doesn't need to worry about it and we're ready to go for next time.
         gameManager.GetComponent<GameManager>().EnemiesToFight.Clear();
         //Spawn our first enemy
         SpawnEnemy();
@@ -67,7 +67,7 @@ public class BattleManager : MonoBehaviour
         if (doBattle)
         {
             //Set turn based on playerObj speed and enemyObj speed
-            //Fastest should go first, random if same
+            //Fastest should go first, random if same.
             StartCoroutine(battleGo());
             doBattle = false;
         }
@@ -75,7 +75,7 @@ public class BattleManager : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemyToRemove)
     {
-        //delete enemy from scene (maybe do cool particles or explosion or something)
+        //delete enemy from scene (can be represented with particle effect)
         Destroy(enemyToRemove);
         //make sure to update our spawn list to get rid of the defeated enemy! (usually first position)
         enemySpawnList.RemoveAt(0);
@@ -125,7 +125,7 @@ public class BattleManager : MonoBehaviour
                 {
                     //set state to lose cause we died
                     combatState = CombatState.Loss;
-                    Debug.Log("Lose");
+                    Debug.Log("You Lose...");
                     break;
                 }
                 //Next Case. Most likely PlayerTurn
@@ -133,7 +133,7 @@ public class BattleManager : MonoBehaviour
                 break;
             //Victory
             case CombatState.Victory:
-                Debug.Log("You win");
+                Debug.Log("You Win!");
                 //You will want to assign exp here, before you travel, otherwise it could be an issue where you don't get your reward!
                 //Travels out to the overworld!
                 gameManager.GetComponent<GameManager>().TravelToWorld(GameManager.Worlds.Overworld);
